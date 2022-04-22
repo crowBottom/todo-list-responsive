@@ -1,0 +1,54 @@
+<%- include("header") -%>
+
+  <!-- MAIN CONTAINER -->
+  <div class="container-fluid mt-3">
+
+    <div class="w3-center">
+
+      <!-- TITLE AND DATE -->
+      <div id="heading" class="">
+        <h3> <%= listTitle %> </h3>
+      </div>
+      <hr>
+
+      <!-- TODOS FORM AND LIST-->
+      <div class="container">
+
+        <!-- LIST OF TODOS -->
+        <%  for(let t of todoList){ %>
+        <form class="" action="/delete" method="post">
+          <div class="w3-margin">
+            <div class="w3-cell w3-padding">
+              <input type="checkbox" name="checkbox" value=<%= t._id %> onChange="this.form.submit()">
+            </div>
+            <div class="w3-cell">
+              <p> <%= t.todo %> </p>
+            </div>
+
+          </div>
+
+          <input type="hidden" name="listName" value="<%= listTitle %>"></input>
+
+
+        </form>
+        <%  } %>
+
+      </div>
+      <hr>
+
+      <!-- TODOS SUBMIT BUTTON -->
+      <div class="container w3-padding">
+
+        <!-- FORM TO ADD TODO -->
+        <form class="" action="/" method="post">
+          <input type="text" name="todo" placeholder="New todo" autofocus="true">
+          <button class="w3-btn w3-round w3-border w3-dark-grey" type="submit" name="list" value=<%= listTitle %>>+</button>
+        </form>
+
+      </div>
+
+    </div>
+
+  </div>
+
+<%- include("footer") -%>
